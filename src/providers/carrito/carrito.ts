@@ -1,6 +1,6 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { AlertController } from 'ionic-angular';
+import { AlertController,Platform } from 'ionic-angular';
 import "rxjs/operator/map";
 
 
@@ -9,7 +9,8 @@ export class CarritoProvider {
   items: any[] = [];
 
   constructor(public http: Http,
-              private alertCtlr:AlertController) {  }
+              private alertCtlr:AlertController,
+              private platform:Platform) {  }
 
   agregar_carrito(item_param: any) {
     console.log(this.items);
@@ -27,6 +28,19 @@ export class CarritoProvider {
     }
 
     this.items.push(item_param);
+  }
+
+  guardar_storage(){
+    if(this.platform.is('cordova')){
+      // dispositivo
+    }else{
+      // computadora
+      localStorage.setItem("item",JSON.stringify(this.items));
+    }
+  }
+
+  cargar_storage(){
+
   }
 
 }

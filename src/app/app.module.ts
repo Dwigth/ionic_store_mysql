@@ -26,6 +26,9 @@ import {
   TabsPage
 } from "../pages/index.paginas";
 
+// storage
+import { IonicStorageModule } from "@ionic/storage";
+
 @NgModule({
   declarations: [
     MyApp,
@@ -43,7 +46,8 @@ import {
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
